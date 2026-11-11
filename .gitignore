@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+
+# Firebase service-account credentials
+includes/kunci-firebase.json
+*firebase-adminsdk*.json
+service-account*.json
+*.pem
+*.key
+
+# Local archives and exported database backups
+htdocs2.zip
+*-export.json
+*-export-*.json
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

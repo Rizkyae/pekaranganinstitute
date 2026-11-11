@@ -1,0 +1,1630 @@
+/* ==========================================================================
+   Pekarangan Institute - CSS Khusus Panel Admin
+   Desain panel admin dengan identitas biru Pekarangan Institute
+   ========================================================================== */
+
+:root {
+    --admin-teal: #1555B5;
+    --admin-teal-terang: #3478D1;
+    --admin-teal-tua: #123D80;
+    --admin-teal-gradien: linear-gradient(135deg, #123D80 0%, #1D63C2 100%);
+    --admin-kanvas: #F1F5FC;
+    --admin-kartu-bg: #FFFFFF;
+    --admin-garis: rgba(21, 85, 181, 0.10);
+    --admin-teks: #172A46;
+    --admin-teks-sub: #667791;
+    --admin-teks-redup: #7B8DA8;
+
+    --admin-radius-kanvas: 30px;
+    --admin-radius-kartu: 20px;
+    --admin-radius-sm: 12px;
+    --admin-radius-pill: 9999px;
+
+    --admin-bayangan: 0 4px 20px -2px rgba(18, 61, 128, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --admin-bayangan-angkat: 0 14px 34px -4px rgba(21, 85, 181, 0.12);
+    --admin-bayangan-pill: 0 6px 18px rgba(21, 85, 181, 0.28);
+}
+
+/* Tata Letak Utama Admin (Floating Canvas di Layar Lebar) */
+.admin-badan {
+    background: radial-gradient(circle at 10% 15%, #DFE9F8 0%, #EDF2FA 52%, #E3EAF7 100%);
+    color: var(--admin-teks);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.admin-wadah {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .admin-badan {
+        padding: 24px 28px;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .admin-wadah {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: var(--admin-kanvas);
+        border-radius: var(--admin-radius-kanvas);
+        box-shadow: 0 24px 64px -12px rgba(10, 60, 65, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.7);
+        overflow: hidden;
+        min-height: calc(100vh - 48px);
+    }
+}
+
+/* Sidebar Kiri CoachPro Style */
+.admin-sidebar {
+    width: 250px;
+    background-color: var(--admin-kanvas);
+    border-right: 1px solid var(--admin-garis);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: transform var(--transisi);
+    z-index: 100;
+}
+
+.admin-sidebar-kepala {
+    padding: 1.75rem 1.5rem 1.25rem;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-sidebar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    color: var(--admin-teks);
+}
+
+.admin-sidebar-brand .logo-item {
+    height: 64px;
+    width: auto;
+    max-width: 80px;
+    object-fit: contain;
+    display: block;
+}
+
+.admin-sidebar-brand .logo-pemisah {
+    width: 1px;
+    height: 20px;
+    background-color: var(--admin-garis);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.admin-sidebar-logo {
+    width: 38px;
+    height: 38px;
+    background: var(--admin-teal-gradien);
+    color: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(21, 85, 181, 0.2);
+    flex-shrink: 0;
+}
+
+.admin-sidebar-judul {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.admin-sidebar-subjudul {
+    font-size: 0.75rem;
+    color: var(--admin-teks-sub);
+    font-weight: 500;
+}
+
+.admin-sidebar-tutup {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--admin-teks-sub);
+    padding: 0.25rem 0.5rem;
+}
+
+/* Navigasi Menu */
+.admin-nav {
+    flex: 1;
+    padding: 0.75rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    overflow-y: auto;
+}
+
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1.15rem;
+    color: var(--admin-teks-sub);
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.admin-nav-item:hover {
+    background-color: rgba(21, 85, 181, 0.06);
+    color: var(--admin-teks);
+}
+
+.admin-nav-item.aktif {
+    background: var(--admin-teal-gradien);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: var(--admin-bayangan-pill);
+}
+
+.admin-nav-item.aktif svg {
+    stroke: #FFFFFF;
+}
+
+.admin-nav-item svg,
+.admin-nav-keluar-tombol svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+.admin-nav-pisah {
+    height: 1px;
+    background-color: var(--garis);
+    margin: 0.75rem 0.5rem;
+}
+
+.admin-nav-keluar-form {
+    margin: 0;
+    padding: 0;
+}
+
+.admin-nav-keluar-tombol {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--merah);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color var(--transisi), color var(--transisi);
+}
+
+.admin-nav-keluar-tombol:hover {
+    background-color: var(--merah-muda);
+    color: #A82020;
+}
+
+/* Area Konten Utama */
+.admin-konten-bungkus {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Topbar CoachPro (Sticky di atas kanvas) */
+.admin-topbar {
+    background-color: rgba(237, 245, 244, 0.85);
+    border-bottom: 1px solid var(--admin-garis);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    backdrop-filter: blur(10px);
+}
+
+.admin-topbar-kiri {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.admin-topbar-toggle {
+    background: #FFFFFF;
+    border: 1px solid var(--admin-garis);
+    color: var(--admin-teal);
+    border-radius: 12px;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 1024px) {
+    .admin-topbar-toggle {
+        display: none;
+    }
+}
+
+.admin-topbar-judul {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    letter-spacing: -0.01em;
+}
+
+.admin-topbar-kanan {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.admin-topbar-ikon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid var(--admin-garis);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--admin-teks-sub);
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.admin-topbar-ikon-btn:hover {
+    background: #F4FAF9;
+    color: var(--admin-teal);
+    transform: translateY(-1px);
+}
+
+.admin-notifikasi-titik {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 8px;
+    height: 8px;
+    background-color: #E03B8A;
+    border-radius: 50%;
+    border: 1.5px solid #FFFFFF;
+}
+
+.admin-profil-kapsul {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.3rem 0.85rem 0.3rem 0.3rem;
+    background: #FFFFFF;
+    border: 1px solid var(--admin-garis);
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.admin-profil-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--admin-teal-gradien);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-profil-nama {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--admin-teks);
+}
+
+/* Halaman Konten */
+.admin-konten {
+    padding: 1.75rem 2rem 2.5rem;
+    max-width: 1400px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.admin-halaman-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.admin-halaman-sapaan {
+    font-size: 0.9375rem;
+    color: var(--admin-teks-sub);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.2rem;
+}
+
+.admin-halaman-judul {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.admin-halaman-subjudul {
+    font-size: 0.9375rem;
+    color: var(--admin-teks-sub);
+    margin-top: 0.25rem;
+}
+
+.admin-halaman-aksi {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Bilah Aksi Simpan Pengaturan Bawah */
+.admin-aksi-simpan-wadah {
+    background: var(--putih);
+    border: 1px solid var(--garis);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    box-shadow: var(--bayangan);
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.admin-aksi-simpan-info {
+    flex: 1 1 320px;
+}
+
+.admin-aksi-simpan-tombol {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Komponen CoachPro Modern Dashboard Layout
+   ========================================================================== */
+
+/* 2-Kolom Grid Utama Dashboard */
+.coach-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 1100px) {
+    .coach-grid {
+        grid-template-columns: 1.15fr 1fr;
+        gap: 1.5rem;
+        align-items: start;
+    }
+}
+
+.coach-kolom {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Kartu Permukaan Putih CoachPro */
+.coach-kartu {
+    background: #FFFFFF;
+    border-radius: var(--admin-radius-kartu);
+    border: 1px solid var(--admin-garis);
+    padding: 1.5rem;
+    box-shadow: var(--admin-bayangan);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coach-kartu:hover {
+    box-shadow: var(--admin-bayangan-angkat);
+}
+
+.coach-kartu-kepala {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    gap: 0.5rem;
+}
+
+.coach-kartu-judul {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.coach-kartu-tautan {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--admin-teal-terang);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.coach-kartu-tautan:hover {
+    color: var(--admin-teal-tua);
+    text-decoration: underline;
+}
+
+/* 1. Highlight Widget (Next Game equivalent) */
+.coach-highlight-wadah {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.coach-highlight-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--admin-teks-sub);
+    background: #EEF6F5;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 1.25rem;
+}
+
+.coach-highlight-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.coach-highlight-pihak {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.coach-highlight-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: #F4FAF9;
+    border: 1px solid var(--admin-garis);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--admin-teal);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.coach-highlight-logo img {
+    max-width: 36px;
+    max-height: 36px;
+    object-fit: contain;
+}
+
+.coach-highlight-nama {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+}
+
+.coach-highlight-vs {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #FCEBF2;
+    color: #E03B8A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 2. Overview Stats (Games statistic equivalent) */
+.coach-stat-bar-wadah {
+    margin: 1.25rem 0 1.5rem 0;
+}
+
+.coach-stat-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 9999px;
+    overflow: hidden;
+    background: #E8F2F0;
+    gap: 4px;
+    padding: 2px;
+}
+
+.coach-segmen-teal {
+    background: linear-gradient(90deg, #123D80, #3478D1);
+    border-radius: 9999px;
+}
+
+.coach-segmen-mint {
+    background-color: #56B99D;
+    border-radius: 9999px;
+}
+
+.coach-segmen-coral {
+    background-color: #F27289;
+    border-radius: 9999px;
+}
+
+.coach-stat-angka-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--admin-garis);
+}
+
+.coach-stat-angka-item .label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--admin-teks-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+}
+
+.coach-stat-angka-item .nilai {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* 3. Grid 2x2 KPI Cards (CoachPro 4 Metrik) */
+.coach-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .coach-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.coach-kpi-kartu {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid var(--admin-garis);
+    padding: 1.2rem 1.25rem;
+    box-shadow: var(--admin-bayangan);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coach-kpi-kartu:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--admin-bayangan-angkat);
+}
+
+.coach-kpi-ikon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.coach-kpi-ikon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.coach-kpi-lavender {
+    background-color: #EFEBFB;
+    color: #6C5CE7;
+}
+
+.coach-kpi-pink {
+    background-color: #FCEBF2;
+    color: #E03B8A;
+}
+
+.coach-kpi-amber {
+    background-color: #FEF2E4;
+    color: #D96B27;
+}
+
+.coach-kpi-cyan {
+    background-color: #E2F6F6;
+    color: #0E9EA3;
+}
+
+.coach-kpi-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--admin-teks-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.coach-kpi-nilai {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+
+.coach-kpi-sub {
+    font-size: 0.75rem;
+    color: var(--admin-teks-redup);
+    margin-top: 0.15rem;
+}
+
+/* 4. Callout Banner Teal Gradien */
+.coach-banner {
+    background: linear-gradient(135deg, #123D80 0%, #0E326A 100%);
+    border-radius: 20px;
+    padding: 1.75rem;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    box-shadow: 0 14px 30px -6px rgba(21, 85, 181, 0.28);
+}
+
+.coach-banner-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #79E2E6;
+    margin-bottom: 0.35rem;
+}
+
+.coach-banner-judul {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #FFFFFF;
+    max-width: 320px;
+    margin-bottom: 0.5rem;
+}
+
+.coach-banner-sub {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 320px;
+    margin-bottom: 1.25rem;
+}
+
+.coach-banner-tombol {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.35rem;
+    background: #FFFFFF;
+    color: var(--admin-teal);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    text-decoration: none;
+    align-self: flex-start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.coach-banner-tombol:hover {
+    background: #F0FAF9;
+    color: var(--admin-teal-tua);
+    transform: translateY(-1px);
+}
+
+/* 5. Tabel Standings-Style Bersih */
+.coach-tabel {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.4rem;
+}
+
+.coach-tabel th {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--admin-teks-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--admin-garis);
+    text-align: left;
+}
+
+.coach-tabel td {
+    padding: 0.75rem 0.85rem;
+    background: #FFFFFF;
+    font-size: 0.875rem;
+    color: var(--admin-teks);
+    vertical-align: middle;
+    border-top: 1px solid rgba(21, 85, 181, 0.04);
+    border-bottom: 1px solid rgba(21, 85, 181, 0.04);
+}
+
+.coach-tabel tr:hover td {
+    background: #F5FAF9;
+}
+
+.coach-tabel td:first-child {
+    border-left: 1px solid rgba(21, 85, 181, 0.04);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.coach-tabel td:last-child {
+    border-right: 1px solid rgba(21, 85, 181, 0.04);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.coach-peringkat {
+    font-weight: 700;
+    color: var(--admin-teks-sub);
+    font-size: 0.8125rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Kompatibilitas Kartu Ringkasan Lama */
+.grid-ringkasan-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.kartu-ringkasan {
+    background: #FFFFFF;
+    padding: 1.25rem;
+    border-radius: var(--admin-radius-kartu);
+    border: 1px solid var(--admin-garis);
+    box-shadow: var(--admin-bayangan);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.kartu-ringkasan-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--admin-teks-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.kartu-ringkasan-nilai {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    line-height: 1.2;
+}
+
+.kartu-ringkasan-sub {
+    font-size: 0.8125rem;
+    color: var(--teks-redup);
+}
+
+.kartu-ringkasan.kartu-penjualan {
+    border-left: 4px solid var(--biru);
+}
+.kartu-ringkasan.kartu-donasi {
+    border-left: 4px solid var(--biru-tua);
+}
+.kartu-ringkasan.kartu-pesanan-menunggu {
+    border-left: 4px solid var(--kuning);
+}
+.kartu-ringkasan.kartu-donasi-menunggu {
+    border-left: 4px solid var(--merah);
+}
+
+/* Tombol Cepat Dashboard */
+.admin-tombol-cepat {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+/* Panel / Kartu Konten */
+.admin-panel {
+    background: #FFFFFF;
+    border-radius: var(--admin-radius-kartu);
+    border: 1px solid var(--admin-garis);
+    box-shadow: var(--admin-bayangan);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.admin-panel-kepala {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--admin-garis);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.admin-panel-judul {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--admin-teks);
+    letter-spacing: -0.01em;
+}
+
+.admin-panel-badan {
+    padding: 1.5rem;
+}
+
+/* Filter & Pencarian Bar */
+.admin-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    background: #FFFFFF;
+    padding: 1rem 1.25rem;
+    border-radius: var(--admin-radius-kartu);
+    border: 1px solid var(--admin-garis);
+    box-shadow: var(--admin-bayangan);
+}
+
+.admin-filter-bar form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    width: 100%;
+    align-items: center;
+}
+
+.admin-input-cari {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Tabel Data Admin */
+.admin-tabel-wadah {
+    width: 100%;
+    overflow-x: auto;
+    background: #FFFFFF;
+    border-radius: var(--admin-radius-kartu);
+    border: 1px solid var(--admin-garis);
+    box-shadow: var(--admin-bayangan);
+}
+
+.admin-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    text-align: left;
+}
+
+.admin-tabel th {
+    background-color: #F8FBFA;
+    padding: 0.875rem 1rem;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--admin-teks-sub);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--admin-garis);
+    white-space: nowrap;
+}
+
+.admin-tabel td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--admin-garis);
+    vertical-align: middle;
+}
+
+.admin-tabel tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-tabel tr:hover td {
+    background-color: rgba(21, 85, 181, 0.03);
+}
+
+/* Foto Thumbnail di Tabel */
+.admin-thumb-produk {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    background-color: var(--biru-muda);
+}
+
+.admin-thumb-kosong {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background-color: var(--biru-muda);
+    color: var(--biru);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Badge Status */
+.badge-status {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.badge-status.status-tampil,
+.badge-status.status-aktif,
+.badge-status.status-berhasil,
+.badge-status.status-selesai {
+    background-color: var(--hijau-muda);
+    color: var(--hijau);
+}
+
+.badge-status.status-draf,
+.badge-status.status-menunggu,
+.badge-status.status-diproses {
+    background-color: var(--kuning-muda);
+    color: var(--kuning);
+}
+
+.badge-status.status-arsip,
+.badge-status.status-batal,
+.badge-status.status-gagal {
+    background-color: var(--merah-muda);
+    color: var(--merah);
+}
+
+.badge-status.status-dibayar,
+.badge-status.status-dikirim {
+    background-color: var(--biru-muda);
+    color: var(--biru);
+}
+
+/* Kolom Aksi */
+.admin-aksi-grup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tombol-aksi {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.8125rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all var(--transisi);
+}
+
+.tombol-aksi-ubah {
+    background: var(--biru-muda);
+    color: var(--biru);
+    border-color: rgba(0, 73, 171, 0.2);
+}
+.tombol-aksi-ubah:hover {
+    background: var(--biru);
+    color: var(--putih);
+}
+
+.tombol-aksi-hapus {
+    background: var(--merah-muda);
+    color: var(--merah);
+    border-color: rgba(214, 69, 69, 0.2);
+}
+.tombol-aksi-hapus:hover {
+    background: var(--merah);
+    color: var(--putih);
+}
+
+.tombol-aksi-sekunder {
+    background: var(--latar);
+    color: var(--teks);
+    border-color: var(--garis);
+}
+.tombol-aksi-sekunder:hover {
+    background: var(--garis);
+}
+
+/* Formulir Admin */
+.admin-form-grup {
+    margin-bottom: 1.25rem;
+}
+
+.admin-form-grup label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    font-size: 0.9375rem;
+    color: var(--teks);
+}
+
+.admin-form-grup .wajib {
+    color: var(--merah);
+}
+
+.admin-form-grup .petunjuk {
+    font-size: 0.8125rem;
+    color: var(--teks-redup);
+    margin-top: 0.25rem;
+}
+
+.admin-form-grup .pesan-error {
+    font-size: 0.8125rem;
+    color: var(--merah);
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+.admin-input,
+.admin-textarea,
+.admin-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--admin-garis);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: var(--admin-teks);
+    background-color: #FFFFFF;
+    transition: border-color var(--transisi), box-shadow var(--transisi);
+    box-sizing: border-box;
+}
+
+.admin-input:focus,
+.admin-textarea:focus,
+.admin-select:focus {
+    border-color: var(--admin-teal-terang);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(20, 153, 158, 0.15);
+}
+
+.admin-form-baris {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* Pratinjau Foto */
+.admin-pratinjau-wadah {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-pratinjau-img {
+    max-width: 140px;
+    max-height: 140px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--garis);
+    object-fit: cover;
+}
+
+/* Kotak Peringatan Tetap */
+.kotak-peringatan {
+    background-color: var(--kuning-muda);
+    border-left: 4px solid var(--kuning);
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--teks);
+    line-height: 1.5;
+}
+
+.kotak-info {
+    background-color: var(--biru-muda);
+    border-left: 4px solid var(--biru);
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--teks);
+}
+
+/* Status Indikator Publik */
+.indikator-status-publik {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.indikator-tampil {
+    background: var(--hijau-muda);
+    color: var(--hijau);
+}
+.indikator-draf {
+    background: var(--kuning-muda);
+    color: var(--kuning);
+}
+.indikator-arsip {
+    background: var(--merah-muda);
+    color: var(--merah);
+}
+
+/* Halaman Login & Setup (Standalone Card di Tengah) */
+.halaman-auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: var(--latar);
+}
+
+.kartu-auth {
+    background: var(--putih);
+    border-radius: var(--radius);
+    padding: 2.25rem 2rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: var(--bayangan);
+    border: 1px solid var(--garis);
+}
+
+.kartu-auth-kepala {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.kartu-auth-kepala .logo-pasangan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.kartu-auth-kepala .logo-item {
+    height: 42px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+}
+
+.kartu-auth-kepala .logo-pemisah {
+    width: 1px;
+    height: 28px;
+    background-color: var(--garis);
+}
+
+.kartu-auth-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--biru);
+    color: var(--putih);
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+}
+
+.kartu-auth-judul {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--teks);
+}
+
+.kartu-auth-sub {
+    font-size: 0.875rem;
+    color: var(--teks-redup);
+    margin-top: 0.25rem;
+}
+
+.input-password-wadah {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-password-wadah input {
+    padding-right: 3rem;
+}
+
+.tombol-toggle-pwd {
+    position: absolute;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--teks-redup);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.tombol-toggle-pwd:hover {
+    color: var(--biru);
+    background-color: var(--latar);
+}
+
+/* Indikator Kekuatan Kata Sandi */
+.meter-password-wadah {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.meter-password-track {
+    width: 100%;
+    height: 6px;
+    background-color: var(--garis);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    display: flex;
+    gap: 4px;
+}
+
+.meter-password-segmen {
+    flex: 1;
+    height: 100%;
+    background-color: #E2E8F0;
+    border-radius: var(--radius-full);
+    transition: background-color 0.25s ease;
+}
+
+.meter-password-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.meter-password-label {
+    color: var(--teks-redup);
+}
+
+.meter-password-status {
+    font-weight: 700;
+    transition: color 0.25s ease;
+}
+
+.status-kekuatan-kosong { color: var(--teks-redup); }
+.status-kekuatan-rendah { color: var(--merah); }
+.status-kekuatan-sedang { color: var(--kuning); }
+.status-kekuatan-tinggi { color: var(--hijau); }
+
+.segmen-merah { background-color: var(--merah) !important; }
+.segmen-oranye, .segmen-kuning { background-color: var(--kuning) !important; }
+.segmen-hijau { background-color: var(--hijau) !important; }
+
+/* Checklist Syarat Kata Sandi */
+.syarat-password-daftar {
+    list-style: none;
+    margin-top: 0.625rem;
+    padding: 0.625rem 0.75rem;
+    background-color: var(--latar);
+    border: 1px solid var(--garis);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+}
+
+.syarat-password-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--teks-redup);
+    transition: color 0.2s ease;
+}
+
+.syarat-password-item.terpenuhi {
+    color: #0F5B34;
+    font-weight: 600;
+}
+
+.syarat-ikon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    border-radius: 50%;
+    background-color: #E2E8F0;
+    color: #64748B;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.syarat-password-item.terpenuhi .syarat-ikon {
+    background-color: var(--hijau);
+    color: var(--putih);
+}
+
+/* Status Konfirmasi Password Cocok */
+.status-konfirmasi-password {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.375rem;
+    display: none;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.status-konfirmasi-cocok {
+    color: #0F5B34;
+    display: flex !important;
+}
+
+.status-konfirmasi-beda {
+    color: var(--merah);
+    display: flex !important;
+}
+
+.kartu-auth-kaki {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--garis);
+    font-size: 0.875rem;
+    color: var(--teks-redup);
+}
+
+/* Modal Detail & Backdrop */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 36, 48, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-overlay.aktif {
+    display: flex;
+}
+
+.modal-wadah {
+    background: var(--putih);
+    border-radius: var(--radius);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--bayangan-angkat);
+    border: 1px solid var(--garis);
+}
+
+.modal-kepala {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--garis);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-badan {
+    padding: 1.5rem;
+}
+
+.modal-tutup {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--teks-redup);
+}
+
+/* Detail List dl/dt/dd */
+.daftar-detail {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.75rem 1rem;
+    font-size: 0.9375rem;
+}
+
+.daftar-detail dt {
+    font-weight: 600;
+    color: var(--teks-redup);
+}
+
+.daftar-detail dd {
+    margin: 0;
+    color: var(--teks);
+    word-break: break-word;
+}
+
+/* Responsif Mobile & Tablet */
+@media (max-width: 900px) {
+    .admin-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .admin-sidebar.buka {
+        transform: translateX(0);
+    }
+
+    .admin-sidebar-tutup {
+        display: block;
+    }
+
+    .admin-topbar {
+        display: flex;
+    }
+
+    .admin-konten {
+        padding: 1.25rem 1rem;
+    }
+
+    .admin-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 95;
+    }
+
+    .admin-backdrop.aktif {
+        display: block;
+    }
+}
+
+/* Responsif Tabel Jadi Kartu di Layar Kecil (<= 768px) */
+@media (max-width: 768px) {
+    .admin-tabel,
+    .admin-tabel thead,
+    .admin-tabel tbody,
+    .admin-tabel th,
+    .admin-tabel td,
+    .admin-tabel tr {
+        display: block;
+    }
+
+    .admin-tabel thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .admin-tabel tr {
+        background: var(--putih);
+        border: 1px solid var(--garis);
+        border-radius: var(--radius);
+        margin-bottom: 1rem;
+        padding: 1rem;
+        box-shadow: var(--bayangan);
+    }
+
+    .admin-tabel td {
+        border: none;
+        border-bottom: 1px dashed var(--garis);
+        position: relative;
+        padding: 0.625rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+    }
+
+    .admin-tabel td:last-child {
+        border-bottom: none;
+        padding-top: 0.75rem;
+        justify-content: flex-end;
+    }
+
+    .admin-tabel td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--teks-redup);
+        text-align: left;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .admin-filter-bar form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-input-cari {
+        width: 100%;
+    }
+}
+
+.lencana-contoh {
+    display: none !important;
+}
