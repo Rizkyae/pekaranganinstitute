@@ -1,0 +1,10 @@
+.git/
+.vscode/
+.env*
+.htaccess
+*.php
+includes/
+supabase/
+scripts/
+README.md
+htdocs2.zip
