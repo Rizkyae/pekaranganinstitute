@@ -1,8 +1,8 @@
-# Konfigurasi Keamanan Web Server Apache - Pekarangan Institute (pekarangan-institute.my.id)
+# Konfigurasi keamanan untuk server Apache. Vercel memakai vercel.json.
 
 # 1. Nonaktifkan index browsing direktori
 Options -Indexes
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 
 # 2. Lindungi berkas tersembunyi (dotfiles: .git, .env, .htaccess, dll.)
 <FilesMatch "^\.">
@@ -15,8 +15,8 @@ DirectoryIndex index.html index.php
     </IfModule>
 </FilesMatch>
 
-# 3. Lindungi berkas sensitif dari akses URL langsung (.sql, .json, .md, .sample.php, .log, .ini)
-<FilesMatch "(?i)\.(sql|sample\.php|log|ini|md|json)$">
+# 3. Lindungi berkas sensitif dari akses URL langsung (.sql, .json, .md, .log, .ini)
+<FilesMatch "(?i)\.(sql|log|ini|md|json)$">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
@@ -26,21 +26,8 @@ DirectoryIndex index.html index.php
     </IfModule>
 </FilesMatch>
 
-# 4. Modul Rewrite: HTTPS, Kanonikal pekarangan-institute.my.id, & Proteksi Direktori Internal
+# 4. Blokir akses langsung ke direktori internal
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
-    # A. Paksa HTTPS & Domain Kanonikal (https://pekarangan-institute.my.id)
-    # Aturan pengalihan ini dilewati jika diuji di server lokal (localhost / 127.0.0.1)
-    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
-    RewriteCond %{HTTPS} off [OR]
-    RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-    RewriteCond %{HTTP_HOST} ^www\.pekarangan\.web\.id$ [NC]
-    RewriteRule ^(.*)$ https://pekarangan-institute.my.id/$1 [R=301,L]
-
-    # B. Blokir akses langsung ke direktori internal (includes, database, docs)
     RewriteRule ^(includes|database|docs)(/.*)?$ - [F,L]
-
-    # C. Pengalihan URL salah ketik admin/admin -> admin/index.php
-    RewriteRule ^admin/admin/?$ admin/index.php [R=302,L]
 </IfModule>
