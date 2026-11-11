@@ -2,6 +2,7 @@
 .vscode/
 .env*
 .htaccess
+# Vercel serves the static homepage; keep PHP source files private.
 **/*.php
 includes/
 htdocs2.zip
