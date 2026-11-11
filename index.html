@@ -1,13 +1,177 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pekarangan Institute: berbelanja, berbagi, berdampak.">
-  <meta name="theme-color" content="#1769aa">
-  <title>Pekarangan Institute</title>
-  <link rel="icon" href="/assets/img/logo-pekarangan.jpeg">
-  <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pekarangan Institute memberdayakan masyarakat melalui produk pekarangan, pendidikan, dan program sosial.">
+    <meta name="theme-color" content="#1555B5">
+    <title>Beranda - Pekarangan Institute</title>
+    <link rel="icon" href="/assets/img/logo-pekarangan.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body data-page="home"><div id="app"><p class="kontainer">Memuat Pekarangan Institute…</p></div><script type="module" src="/assets/js/app.js"></script></body>
+<body class="tata-letak-sidebar-kanan">
+    <a href="#konten-utama" class="lompat-konten">Lewati ke konten utama</a>
+
+    <header class="header-mobile" id="header-mobile">
+        <div class="kontainer header-mobile-konten">
+            <a href="/index.html" class="logo-tautan" aria-label="Beranda Pekarangan Institute">
+                <img src="/assets/img/logo-pekarangan.jpeg" alt="Pekarangan Institute" class="logo-item logo-mitra">
+            </a>
+            <div class="header-mobile-kanan">
+                <a href="/donasi.php" class="tombol tombol-utama tombol-sm tombol-donasi-mobile">Donasi</a>
+                <button type="button" class="tombol-menu-mobile" id="tombol-menu" aria-expanded="false" aria-controls="sidebar-kanan" aria-label="Buka menu navigasi">
+                    <span class="baris-hamburger"></span>
+                    <span class="baris-hamburger"></span>
+                    <span class="baris-hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+    <aside class="sidebar-kanan" id="sidebar-kanan" aria-label="Navigasi samping">
+        <div class="sidebar-kanan-kepala">
+            <a href="/index.html" class="logo-tautan" aria-label="Beranda Pekarangan Institute">
+                <img src="/assets/img/logo-pekarangan.jpeg" alt="Pekarangan Institute" class="logo-item logo-mitra">
+            </a>
+            <button type="button" class="tombol-sidebar-tutup" id="tombol-sidebar-tutup" aria-label="Tutup navigasi">&times;</button>
+        </div>
+        <div class="sidebar-kanan-badan">
+            <nav class="menu-utama" aria-label="Menu utama">
+                <span class="sidebar-label-nav">NAVIGASI HALAMAN</span>
+                <ul class="menu-daftar">
+                    <li class="menu-item"><a href="/index.html" class="aktif"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Beranda</a></li>
+                    <li class="menu-item"><a href="/produk.php"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l2 4H4zM5 7v13h14V7M9 11h6"/></svg>Produk</a></li>
+                    <li class="menu-item"><a href="/program.php"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Program</a></li>
+                    <li class="menu-item"><a href="/transparansi.php"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h8"/></svg>Transparansi</a></li>
+                    <li class="menu-item"><a href="/tentang.php"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>Tentang</a></li>
+                    <li class="menu-item"><a href="/kontak.php"><svg class="menu-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 2.1L7.8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5l2.8.5a2 2 0 0 1 2 2.3z"/></svg>Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-aksi">
+                <a href="/donasi.php" class="tombol tombol-utama tombol-blok">♡ &nbsp; Donasi Sekarang</a>
+            </div>
+        </div>
+        <div class="sidebar-kanan-kaki">
+            <p>&copy; 2026 Pekarangan Institute</p>
+            <p class="sidebar-kaki-sub">Ketahanan Pangan &amp; Komunitas</p>
+        </div>
+    </aside>
+
+    <div class="wadah-situs">
+        <main id="konten-utama">
+            <div class="kontainer">
+                <section class="hero" aria-labelledby="hero-judul">
+                    <div class="hero-grid">
+                        <div class="hero-konten">
+                            <span class="hero-label">BERBELANJA &bull; BERBAGI &bull; BERDAMPAK</span>
+                            <h1 class="hero-judul" id="hero-judul">Pekarangan Institute</h1>
+                            <p class="hero-teks">Pekarangan Institute adalah lembaga pemberdayaan masyarakat yang berfokus pada bidang sosial dan pendidikan (Educational Research Center).</p>
+                            <div class="grup-tombol">
+                                <a href="/produk.php" class="tombol tombol-utama">Belanja Sekarang</a>
+                                <a href="/program.php" class="tombol tombol-sekunder">Lihat Program</a>
+                            </div>
+                        </div>
+                        <div class="hero-media">
+                            <div class="foto-wadah">
+                                <img src="/uploads/35e8aade1d61e335c2067066cc46585d.jpeg" alt="Pekarangan Institute dan lingkungan sekolah komunitas" fetchpriority="high">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bagian" aria-labelledby="judul-langkah">
+                    <div class="bagian-kepala">
+                        <h2 id="judul-langkah">Bagaimana Kami Bekerja</h2>
+                        <p>Setiap transaksi bernilai ganda: memberdayakan pekebun lokal sekaligus mengalirkan kebaikan untuk sesama.</p>
+                    </div>
+                    <div class="langkah-grid">
+                        <article class="langkah-kartu">
+                            <span class="langkah-nomor">Langkah 1</span>
+                            <h3>Berbelanja</h3>
+                            <p>Dukung produk pekarangan dan mitra lokal.</p>
+                        </article>
+                        <article class="langkah-kartu">
+                            <span class="langkah-nomor">Langkah 2</span>
+                            <h3>Berbagi</h3>
+                            <p>Salurkan kepedulian melalui program sosial kami.</p>
+                        </article>
+                        <article class="langkah-kartu">
+                            <span class="langkah-nomor">Langkah 3</span>
+                            <h3>Berdampak</h3>
+                            <p>Bangun pekarangan produktif dan komunitas yang lebih mandiri.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="bagian">
+                    <div class="bagian-kepala">
+                        <h2>Produk Pilihan Terbaru</h2>
+                        <p>Dukung kemandirian pangan keluarga melalui produk segar dan olahan alami.</p>
+                    </div>
+                    <div class="kotak-kosong">
+                        <p>Kunjungi katalog untuk melihat produk pekarangan dan mitra lokal.</p>
+                        <a href="/produk.php" class="tombol tombol-sekunder">Lihat Semua Produk &rarr;</a>
+                    </div>
+                </section>
+
+                <section class="bagian">
+                    <div class="bagian-kepala">
+                        <h2>Program Sosial Berjalan</h2>
+                        <p>Salurkan kepedulian Anda untuk program pemberdayaan dan ketahanan komunitas.</p>
+                    </div>
+                    <div class="kotak-kosong">
+                        <p>Kenali program yang sedang berjalan dan dukung sesuai pilihan Anda.</p>
+                        <a href="/program.php" class="tombol tombol-sekunder">Lihat Semua Program &rarr;</a>
+                    </div>
+                </section>
+
+                <section class="bagian">
+                    <div class="blok-ajakan">
+                        <h2>Mari Bergabung dalam Gerakan Kebaikan</h2>
+                        <p>Dukungan Anda melalui produk maupun donasi sukarela memberi dampak nyata bagi keluarga dan lingkungan binaan.</p>
+                        <div class="grup-tombol">
+                            <a href="/produk.php" class="tombol tombol-utama">Mulai Belanja</a>
+                            <a href="/donasi.php" class="tombol tombol-utama">Berdonasi Sekarang</a>
+                        </div>
+                        <a href="/transparansi.php" class="blok-ajakan-tautan">Pelajari bagaimana dana dikelola dan disalurkan &rarr;</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer class="footer-utama">
+            <div class="kontainer">
+                <div class="footer-grid">
+                    <div class="footer-tentang">
+                        <a href="/index.html" class="logo-tautan jarak-bawah-sm" aria-label="Beranda Pekarangan Institute">
+                            <img src="/assets/img/logo-pekarangan.jpeg" alt="Pekarangan Institute" class="logo-item logo-mitra">
+                        </a>
+                        <p><strong>Berbelanja, Berbagi, Berdampak</strong></p>
+                        <p class="teks-sm teks-redup">Pemberdayaan pekarangan produktif dan penguatan ekonomi komunitas.</p>
+                    </div>
+                    <div class="footer-kolom">
+                        <h3 class="footer-judul">Navigasi</h3>
+                        <ul class="footer-menu">
+                            <li><a href="/produk.php">Katalog Produk</a></li>
+                            <li><a href="/program.php">Program Sosial</a></li>
+                            <li><a href="/transparansi.php">Transparansi Dana</a></li>
+                            <li><a href="/tentang.php">Tentang Kami</a></li>
+                            <li><a href="/kontak.php">Hubungi Kami</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-kolom">
+                        <h3 class="footer-judul">Mari Terhubung</h3>
+                        <p class="teks-sm teks-redup">Ada pertanyaan atau ingin berkolaborasi dengan kami?</p>
+                        <a href="/kontak.php" class="tombol tombol-sekunder tombol-sm">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="footer-bawah">&copy; 2026 Pekarangan Institute. Hak Cipta Dilindungi.</div>
+            </div>
+        </footer>
+    </div>
+    <script src="/assets/js/app.js"></script>
+</body>
 </html>

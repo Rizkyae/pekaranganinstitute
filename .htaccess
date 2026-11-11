@@ -2,7 +2,7 @@
 
 # 1. Nonaktifkan index browsing direktori
 Options -Indexes
-DirectoryIndex index.php
+DirectoryIndex index.html index.php
 
 # 2. Lindungi berkas tersembunyi (dotfiles: .git, .env, .htaccess, dll.)
 <FilesMatch "^\.">
@@ -41,20 +41,6 @@ DirectoryIndex index.php
     # B. Blokir akses langsung ke direktori internal (includes, database, docs)
     RewriteRule ^(includes|database|docs)(/.*)?$ - [F,L]
 
-    # C. Redirect legacy PHP URLs and internally resolve clean extensionless URLs.
-    RewriteCond %{REQUEST_METHOD} ^(?:GET|HEAD)$
-    RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.php(?:[?\s]) [NC]
-    RewriteRule ^(.*/)?index\.php$ /$1 [R=301,L,NE]
-
-    RewriteCond %{REQUEST_METHOD} ^(?:GET|HEAD)$
-    RewriteCond %{THE_REQUEST} \s/+(.+?)\.php(?:[?\s]) [NC]
-    RewriteRule ^(.+?)\.php$ /$1 [R=301,L,NE]
-
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME}.php -f
-    RewriteRule ^(.+?)/?$ $1.php [L]
-
-    # D. Pengalihan URL salah ketik admin/admin -> admin/index.php
+    # C. Pengalihan URL salah ketik admin/admin -> admin/index.php
     RewriteRule ^admin/admin/?$ admin/index.php [R=302,L]
 </IfModule>

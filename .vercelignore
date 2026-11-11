@@ -2,9 +2,6 @@
 .vscode/
 .env*
 .htaccess
-*.php
+**/*.php
 includes/
-supabase/
-scripts/
-README.md
 htdocs2.zip
